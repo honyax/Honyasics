@@ -1,55 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ソース ファイル">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="共通">
+      <UniqueIdentifier>cd7cb6bc-e6d8-4895-9854-51156911f13f</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="資産">
+      <UniqueIdentifier>4f2599a7-8735-49df-aabc-938ab39f2e5a</UniqueIdentifier>
+      <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
     </Filter>
-    <Filter Include="リソース ファイル">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="コンテンツ">
+      <UniqueIdentifier>951e2d88-0040-4e98-b1e7-2acfde2a4cb0</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Common\d3dx12.h">
+      <Filter>共通</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Common\DirectXHelper.h">
+      <Filter>共通</Filter>
     </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Common\StepTimer.h">
+      <Filter>共通</Filter>
     </ClInclude>
-    <ClInclude Include="Honyasics.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Common\DeviceResources.h">
+      <Filter>共通</Filter>
     </ClInclude>
-    <ClInclude Include="dbgstream.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Honyasics.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Common\DeviceResources.cpp">
+      <Filter>共通</Filter>
     </ClCompile>
-    <ClCompile Include="dbgstream.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClInclude Include="Content\Sample3DSceneRenderer.h">
+      <Filter>コンテンツ</Filter>
+    </ClInclude>
+    <ClInclude Include="Content\ShaderStructures.h">
+      <Filter>コンテンツ</Filter>
+    </ClInclude>
+    <ClCompile Include="Content\Sample3DSceneRenderer.cpp">
+      <Filter>コンテンツ</Filter>
     </ClCompile>
+    <FxCompile Include="Content\SamplePixelShader.hlsl">
+      <Filter>コンテンツ</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\SampleVertexShader.hlsl">
+      <Filter>コンテンツ</Filter>
+    </FxCompile>
+    <Image Include="Assets\LockScreenLogo.scale-200.png">
+      <Filter>資産</Filter>
+    </Image>
+    <Image Include="Assets\Square150x150Logo.scale-200.png">
+      <Filter>資産</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.scale-200.png">
+      <Filter>資産</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>資産</Filter>
+    </Image>
+    <Image Include="Assets\Wide310x150Logo.scale-200.png">
+      <Filter>資産</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Honyasics.rc">
-      <Filter>リソース ファイル</Filter>
-    </ResourceCompile>
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="HonyasicsMain.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="dbgstream.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="small.ico">
-      <Filter>リソース ファイル</Filter>
+    <ClInclude Include="App.h" />
+    <ClInclude Include="HonyasicsMain.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="dbgstream.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\SplashScreen.scale-200.png">
+      <Filter>資産</Filter>
     </Image>
-    <Image Include="Honyasics.ico">
-      <Filter>リソース ファイル</Filter>
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <Filter>資産</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
   </ItemGroup>
 </Project>
