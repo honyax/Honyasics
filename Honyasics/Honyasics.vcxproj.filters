@@ -56,18 +56,25 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
       <Filter>資産</Filter>
     </Image>
+    <Filter Include="lib">
+      <UniqueIdentifier>{3654c09f-f51f-4f24-be7a-74ec453b660c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="HonyasicsMain.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="dbgstream.cpp" />
+    <ClCompile Include="dbgstream.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="HonyasicsMain.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="dbgstream.h" />
+    <ClInclude Include="dbgstream.h">
+      <Filter>lib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\SplashScreen.scale-200.png">
