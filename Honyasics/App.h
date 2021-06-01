@@ -35,6 +35,13 @@ namespace Honyasics
 		void OnOrientationChanged(Windows::Graphics::Display::DisplayInformation^ sender, Platform::Object^ args);
 		void OnDisplayContentsInvalidated(Windows::Graphics::Display::DisplayInformation^ sender, Platform::Object^ args);
 
+		// マウス イベント ハンドラー。
+		void OnPointerPressed(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::PointerEventArgs^ args);
+		void OnPointerReleased(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::PointerEventArgs^ args);
+
+		// キー イベント ハンドラー
+		void OnKeyUp(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::KeyEventArgs^ args);
+
 	private:
 		//m_deviceResources 用のプライベート アクセサーはデバイス除去エラーから保護します。
 		std::shared_ptr<DX::DeviceResources> GetDeviceResources();
@@ -43,6 +50,8 @@ namespace Honyasics
 		std::unique_ptr<HonyasicsMain> m_main;
 		bool m_windowClosed;
 		bool m_windowVisible;
+
+		bool m_leftButtonPressed;
 	};
 }
 

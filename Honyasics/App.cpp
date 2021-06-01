@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
 #include "App.h"
+#include "dbgstream.h"
 
 #include <ppltasks.h>
 
@@ -35,7 +36,8 @@ IFrameworkView^ Direct3DApplicationSource::CreateView()
 
 App::App() :
 	m_windowClosed(false),
-	m_windowVisible(true)
+	m_windowVisible(true),
+	m_leftButtonPressed(false)
 {
 }
 
@@ -76,6 +78,11 @@ void App::SetWindow(CoreWindow^ window)
 
 	DisplayInformation::DisplayContentsInvalidated +=
 		ref new TypedEventHandler<DisplayInformation^, Object^>(this, &App::OnDisplayContentsInvalidated);
+
+	window->PointerPressed += ref new TypedEventHandler<CoreWindow^, PointerEventArgs^>(this, &App::OnPointerPressed);
+	window->PointerReleased += ref new TypedEventHandler<CoreWindow^, PointerEventArgs^>(this, &App::OnPointerReleased);
+
+	window->KeyUp += ref new TypedEventHandler<CoreWindow^, KeyEventArgs^>(this, &App::OnKeyUp);
 }
 
 // シーンのリソースを初期化するか、以前に保存したアプリ状態を読み込みます。
@@ -197,6 +204,34 @@ void App::OnOrientationChanged(DisplayInformation^ sender, Object^ args)
 void App::OnDisplayContentsInvalidated(DisplayInformation^ sender, Object^ args)
 {
 	GetDeviceResources()->ValidateDevice();
+}
+
+void App::OnPointerPressed(CoreWindow^ sender, PointerEventArgs^ args)
+{
+	// マウスの左ボタンが押されていたらフラグを立てる
+	if (args->CurrentPoint->Properties->IsLeftButtonPressed) {
+		m_leftButtonPressed = true;
+	}
+}
+
+void App::OnPointerReleased(CoreWindow^ sender, PointerEventArgs^ args)
+{
+	// マウスの左ボタンが押されている状態から離された状態になった場合にマウスの位置をデバッグログに出す
+	PointerPoint^ p = args->CurrentPoint;
+	if (m_leftButtonPressed && !p->Properties->IsLeftButtonPressed) {
+		cdbg << "Honyasics OnPointerReleased(" << p->Position.X << ", " << p->Position.Y << ")" << std::endl;
+		m_leftButtonPressed = false;
+	}
+}
+
+void App::OnKeyUp(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::KeyEventArgs^ args)
+{
+	auto status = args->KeyStatus;
+	
+	// F1 ~ F8 までを認識する
+	if (0x3B <= status.ScanCode && status.ScanCode <= 0x42) {
+		cdbg << "Honyasics OnKeyUp F" << (status.ScanCode - 0x3A) << std::endl;
+	}
 }
 
 std::shared_ptr<DX::DeviceResources> App::GetDeviceResources()
